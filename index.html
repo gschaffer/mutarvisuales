@@ -7,186 +7,390 @@
 <meta name="description" content="Ilustración, retratos, collage digital, cuadros personalizados y diseño gráfico por encargo. Lomas de Zamora, Buenos Aires.">
 <meta property="og:title" content="Mutar Visuales — Arte digital">
 <meta property="og:description" content="Ilustración, retratos, cuadros personalizados y diseño gráfico por encargo.">
-<meta property="og:image" content="https://www.mutarvisuales.com.ar/img/vida.jpg">
+<meta property="og:image" content="https://www.mutarvisuales.com.ar/img/fiorito.jpg">
 <meta property="og:url" content="https://www.mutarvisuales.com.ar/">
 <link rel="icon" href="favicon.svg" type="image/svg+xml">
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&amp;family=Oswald:wght@300;400;600&amp;family=DM+Sans:ital,wght@0,400;0,500;0,700;1,400&amp;display=swap" rel="stylesheet">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Oswald:wght@300;400;600&family=DM+Sans:ital,wght@0,400;0,500;0,700;1,400&family=Cormorant+Garamond:ital,wght@1,500&display=swap" rel="stylesheet">
 <style>
-body{margin:0;background:#F6F3F7}
-a{color:#7B2C8F}a:hover{color:#3B1240}
-.mv-card img{transition:transform .5s ease}
-.mv-card:hover img{transform:scale(1.04)}
-.mv-btn{transition:background .2s ease, transform .2s ease}
-.mv-btn:hover{transform:translateY(-2px)}
+:root{
+  --ink:#2A0F2F; --plum:#3B1240; --violet:#7B2C8F; --accent:#8A2FA0; --lilac:#D6B6E2;
+  --muted:#4A3550; --ground:#F6F3F7; --mist:#EDE7EF; --zig:#E6E0E9;
+  --clay:#C8643F; --sand:#F1E3D3; --cocoa:#3A2219;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth;overflow-x:clip}
+body{margin:0;background:var(--ground);color:var(--ink);font-family:'DM Sans',system-ui,sans-serif;overflow-x:hidden}
+img{max-width:100%;display:block}
+a{color:var(--violet)}a:hover{color:var(--plum)}
+.wrap{max-width:1240px;margin:0 auto;padding:0 24px}
+.display{font-family:'Bebas Neue','Oswald',sans-serif;font-weight:400;line-height:.9;margin:0}
+.h2{font-size:clamp(52px,7vw,96px);color:var(--plum)}
+.kicker{margin:0;font-family:'Oswald',sans-serif;letter-spacing:.28em;font-size:14px;color:var(--violet);text-transform:uppercase}
+.lead{margin:0;font-size:17px;line-height:1.6;color:var(--muted);max-width:460px}
+.btn{display:inline-flex;align-items:center;gap:10px;min-height:52px;padding:0 28px;border-radius:999px;text-decoration:none;font-weight:700;font-size:16px;transition:transform .2s ease,background .2s ease}
+.btn:hover{transform:translateY(-2px)}
+.btn-solid{background:var(--plum);color:#fff}.btn-solid:hover{color:#fff;background:#4d1a54}
+.btn-line{border:2px solid var(--plum);color:var(--plum)}
+.sec-head{display:flex;flex-wrap:wrap;align-items:flex-end;justify-content:space-between;gap:24px;margin-bottom:48px}
+
+/* nav */
+header{position:relative;z-index:3}
+.nav{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:16px;padding-top:22px;padding-bottom:22px}
+.brand{display:flex;align-items:center;gap:12px;text-decoration:none;color:var(--ink)}
+.brand span{font-family:'Oswald',sans-serif;font-weight:600;letter-spacing:.32em;font-size:18px}
+.nav nav{display:flex;flex-wrap:wrap;gap:4px 26px}
+.nav nav a{color:var(--ink);text-decoration:none;padding:10px 0;font-weight:500;font-size:15px}
+.nav nav a:hover{color:var(--violet)}
+
+/* hero */
+.hero{position:relative;display:flex;flex-wrap:wrap;align-items:center;gap:56px;padding-top:40px;padding-bottom:110px}
+.hero .zig{position:absolute;top:0;left:-200px;width:calc(100% + 400px);height:100%;z-index:0}
+.hero-copy{position:relative;z-index:1;flex:999 1 460px;min-width:0;display:flex;flex-direction:column;gap:24px}
+.hero h1{font-size:clamp(64px,11vw,148px);color:var(--plum)}
+.hero h1 em{font-style:normal;color:var(--accent)}
+.hero-art{position:relative;z-index:1;flex:1 1 340px;display:flex;justify-content:center}
+.stack{position:relative;width:min(100%,430px);aspect-ratio:4/5}
+.stack img{position:absolute;box-shadow:0 30px 60px -20px rgba(59,18,64,.45);object-fit:cover}
+.stack .a{right:0;top:0;width:70%;height:86%;border-radius:6px;transform:rotate(3deg)}
+.stack .b{left:0;bottom:0;width:52%;aspect-ratio:1/1;border:10px solid #fff;border-radius:4px;transform:rotate(-6deg)}
+
+/* strip */
+.strip{background:var(--plum);color:#EADFEF;padding:18px 24px;display:flex;flex-wrap:wrap;justify-content:center;gap:10px 36px;font-family:'Bebas Neue',sans-serif;font-size:26px;letter-spacing:.08em}
+.strip i{font-style:normal;color:#B07CC2}
+
+/* servicios */
+.services{padding-top:120px;padding-bottom:80px}
+.grid-svc{display:grid;grid-template-columns:repeat(auto-fit,minmax(270px,1fr));gap:24px}
+.card{background:#fff;border-radius:18px;overflow:hidden;display:flex;flex-direction:column}
+.card .ph{overflow:hidden;aspect-ratio:4/3;background:var(--zig)}
+.card .ph img{width:100%;height:100%;object-fit:cover;transition:transform .5s ease}
+.card:hover .ph img{transform:scale(1.04)}
+.card .tx{padding:24px 26px 28px;display:flex;flex-direction:column;gap:10px}
+.num{font-family:'Oswald',sans-serif;font-size:13px;letter-spacing:.24em;color:var(--violet)}
+.card h3{margin:0;font-family:'Oswald',sans-serif;font-weight:600;font-size:26px;color:var(--plum)}
+.card p{margin:0;font-size:16px;line-height:1.6;color:var(--muted)}
+.card.dark{background:var(--plum);color:#fff;padding:30px 26px;justify-content:space-between;gap:28px}
+.card.dark h3{color:#fff}.card.dark p{color:#EADFEF}.card.dark .num{color:var(--lilac)}
+
+/* carrusel */
+.showcase{background:var(--ink);color:#fff;padding:110px 0 90px;position:relative;overflow:hidden}
+.showcase .h2{color:#fff}
+.showcase .lead{color:#CDBBD3}
+.showcase .kicker{color:var(--lilac)}
+.car{position:relative}
+.track{display:flex;align-items:center;gap:28px;overflow-x:auto;scroll-snap-type:x mandatory;scroll-behavior:smooth;padding:10px max(24px,calc((100vw - 1240px)/2 + 24px)) 30px;scrollbar-width:none;-webkit-overflow-scrolling:touch}
+.track::-webkit-scrollbar{display:none}
+.slide{flex:0 0 auto;margin:0;scroll-snap-align:center;display:flex;flex-direction:column;gap:14px;transition:opacity .4s ease,transform .4s ease;opacity:.45;transform:scale(.94)}
+.slide.on{opacity:1;transform:scale(1)}
+.slide img{height:clamp(300px,52vh,480px);width:auto;max-width:84vw;object-fit:cover;border-radius:10px;box-shadow:0 30px 60px -24px rgba(0,0,0,.7)}
+.slide figcaption{font-family:'Oswald',sans-serif;font-weight:300;letter-spacing:.14em;font-size:14px;color:#CDBBD3;text-transform:uppercase}
+.car-ui{display:flex;align-items:center;justify-content:space-between;gap:20px;flex-wrap:wrap;margin-top:18px}
+.dots{display:flex;flex-wrap:wrap;gap:6px}
+.dots button{width:44px;height:44px;border:0;background:transparent;padding:0;cursor:pointer;display:grid;place-items:center}
+.dots button::after{content:"";width:8px;height:8px;border-radius:99px;background:#6E5574;transition:all .3s ease}
+.dots button[aria-current="true"]::after{width:26px;background:var(--lilac)}
+.arrows{display:flex;gap:12px}
+.arrows button{width:54px;height:54px;border-radius:99px;border:1.5px solid #6E5574;background:transparent;color:#fff;cursor:pointer;display:grid;place-items:center;transition:background .2s ease,border-color .2s ease}
+.arrows button:hover{background:var(--violet);border-color:var(--violet)}
+
+@media (max-width:560px){.slide img{width:auto;height:auto;max-width:84vw;max-height:60vh}.dots{display:none}.car-ui{justify-content:flex-end}}
+/* danza */
+.danza{background:var(--sand);padding:120px 0;position:relative;overflow:hidden}
+.danza .zig2{position:absolute;inset:0;width:100%;height:100%}
+.danza .wrap{position:relative}
+.danza .kicker{color:var(--clay)}
+.danza .h2{color:var(--cocoa);font-family:'Cormorant Garamond',serif;font-style:italic;font-weight:500;line-height:1;font-size:clamp(48px,6.5vw,92px)}
+.danza .lead{color:#5B3A2C}
+.grid-danza{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:28px}
+.poster{margin:0;display:flex;flex-direction:column;gap:18px}
+.poster .ph{overflow:hidden;border-radius:4px;aspect-ratio:4/5;background:#e9d6c2;box-shadow:0 24px 50px -24px rgba(58,34,25,.55)}
+.poster .ph img{width:100%;height:100%;object-fit:cover;object-position:top;transition:transform .6s ease}
+.poster:hover .ph img{transform:scale(1.04)}
+.poster figcaption{font-family:'Cormorant Garamond',serif;font-style:italic;font-size:23px;line-height:1.3;color:var(--cocoa)}
+.poster figcaption span{display:block;font-family:'Oswald',sans-serif;font-style:normal;font-size:12px;letter-spacing:.24em;color:var(--clay);margin-bottom:4px}
+.danza-band{display:flex;flex-wrap:wrap;gap:28px;margin-top:64px;align-items:stretch}
+.danza-band .wide{flex:999 1 520px;min-width:0;margin:0;border-radius:6px;overflow:hidden}
+.danza-band .wide img{width:100%;height:100%;object-fit:cover;min-height:280px}
+.danza-band .side{flex:1 1 260px;margin:0;border-radius:6px;overflow:hidden}
+.danza-band .side img{width:100%;height:100%;object-fit:cover;min-height:280px}
+
+/* galeria */
+.gallery{background:var(--mist);padding:110px 0}
+.grid-gal{display:grid;grid-template-columns:repeat(auto-fill,minmax(230px,1fr));gap:20px}
+.grid-gal figure{margin:0;overflow:hidden;border-radius:14px;aspect-ratio:3/4;background:#fff}
+.grid-gal img{width:100%;height:100%;object-fit:cover;transition:transform .5s ease}
+.grid-gal figure:hover img{transform:scale(1.04)}
+
+/* packaging */
+.pack{padding:120px 0}
+.pack-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:28px;align-items:center}
+.pack-grid figure{margin:0;border-radius:16px;overflow:hidden;box-shadow:0 30px 60px -30px rgba(59,18,64,.45)}
+.pack-grid figure img{width:100%;height:100%;object-fit:cover}
+.quote{display:flex;flex-direction:column;gap:20px}
+.quote blockquote{margin:0;font-family:'Bebas Neue',sans-serif;font-size:clamp(46px,5.5vw,72px);line-height:.95;color:var(--plum)}
+.quote blockquote em{font-style:normal;color:var(--accent)}
+
+/* proceso */
+.process{background:var(--mist);padding:110px 0}
+.grid-steps{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:40px}
+.step{display:flex;flex-direction:column;gap:14px;border-top:3px solid var(--plum);padding-top:24px}
+.step b{font-family:'Bebas Neue',sans-serif;font-weight:400;font-size:64px;line-height:1;color:var(--accent)}
+.step h3{margin:0;font-family:'Oswald',sans-serif;font-weight:600;font-size:24px;color:var(--plum)}
+.step p{margin:0;font-size:16px;line-height:1.6;color:var(--muted)}
+
+/* contacto */
+.contact{position:relative;color:#fff;padding:130px 0;overflow:hidden;background:var(--plum)}
+.contact .bg{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:.22;filter:grayscale(1) contrast(1.1);mix-blend-mode:luminosity}
+.contact::before{content:"";position:absolute;inset:0;background:linear-gradient(90deg,rgba(59,18,64,.96) 35%,rgba(59,18,64,.6))}
+.contact .wrap{position:relative;display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:48px}
+.contact h2{font-size:clamp(56px,8vw,112px)}
+.contact p{margin:0;max-width:500px;font-size:18px;line-height:1.6;color:#EADFEF}
+.btn-white{background:#fff;color:var(--plum);min-height:56px;font-size:17px}.btn-white:hover{color:var(--plum)}
+.btn-ghost{border:2px solid var(--lilac);color:#fff;min-height:56px;font-size:17px}.btn-ghost:hover{color:#fff;background:rgba(255,255,255,.08)}
+footer{background:#2A0B2E;color:#CDBBD3;padding:28px 24px;text-align:center;font-size:14px}
+
+/* reveal */
+.rv{opacity:0;transform:translateY(24px);transition:opacity .8s ease,transform .8s ease}
+.rv.in{opacity:1;transform:none}
+@media (prefers-reduced-motion:reduce){.rv{opacity:1;transform:none}.track{scroll-behavior:auto}.slide{transition:none}}
 </style>
-<style>html{scroll-behavior:smooth}img{max-width:100%}</style>
 </head>
 <body>
-<div style="font-family: 'DM Sans', system-ui, sans-serif; color: #2A0F2F; background: #F6F3F7; overflow: hidden; position: relative">
 
-  <!-- NAV -->
-  <header style="position: relative; z-index: 2; max-width: 1240px; margin: 0 auto; padding: 22px 24px; display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 16px">
-    <a href="#inicio" style="display: flex; align-items: center; gap: 12px; text-decoration: none; color: #2A0F2F">
-      <svg width="40" height="34" viewBox="0 0 400 340" aria-hidden="true"><polygon points="120,60 300,60 210,230" fill="#B6ACB4"></polygon><polygon points="46,0 58,0 66,262 4,262" fill="#3B1240"></polygon><polygon points="342,0 354,0 396,262 334,262" fill="#3B1240"></polygon><polyline points="84,30 314,62 122,176 314,290 84,322" fill="none" stroke="#7B2C8F" stroke-width="32" stroke-linejoin="miter"></polyline></svg>
-      <span style="font-family: 'Oswald', sans-serif; font-weight: 600; letter-spacing: 0.32em; font-size: 18px">MUTAR</span>
-    </a>
-    <nav aria-label="Principal" style="display: flex; flex-wrap: wrap; gap: 8px 28px; font-size: 15px; font-weight: 500">
-      <a href="#servicios" style="color: #2A0F2F; text-decoration: none; padding: 10px 0">Servicios</a>
-      <a href="#galeria" style="color: #2A0F2F; text-decoration: none; padding: 10px 0">Galería</a>
-      <a href="#proceso" style="color: #2A0F2F; text-decoration: none; padding: 10px 0">Cómo trabajo</a>
-      <a href="#contacto" style="color: #2A0F2F; text-decoration: none; padding: 10px 0">Contacto</a>
-    </nav>
-  </header>
+<header class="wrap nav">
+  <a class="brand" href="#inicio">
+    <svg width="40" height="34" viewBox="0 0 400 340" aria-hidden="true"><polygon points="120,60 300,60 210,230" fill="#B6ACB4"/><polygon points="46,0 58,0 66,262 4,262" fill="#3B1240"/><polygon points="342,0 354,0 396,262 334,262" fill="#3B1240"/><polyline points="84,30 314,62 122,176 314,290 84,322" fill="none" stroke="#7B2C8F" stroke-width="32"/></svg>
+    <span>MUTAR</span>
+  </a>
+  <nav aria-label="Principal">
+    <a href="#servicios">Servicios</a>
+    <a href="#obras">Obras</a>
+    <a href="#danza">Serie danza</a>
+    <a href="#galeria">Galería</a>
+    <a href="#contacto">Contacto</a>
+  </nav>
+</header>
 
-  <!-- HERO -->
-  <section id="inicio" style="position: relative; max-width: 1240px; margin: 0 auto; padding: 48px 24px 120px; display: flex; flex-wrap: wrap; align-items: center; gap: 56px">
-    <svg viewBox="0 0 1200 700" preserveAspectRatio="none" aria-hidden="true" style="position: absolute; inset: 0 -200px 0 -200px; width: calc(100% + 400px); height: 100%; z-index: 0"><polygon points="0,40 820,120 300,330 1200,560 1200,640 160,380 640,190 0,110" fill="#E6E0E9"></polygon></svg>
-    <div style="position: relative; z-index: 1; flex: 999 1 460px; min-width: 0; display: flex; flex-direction: column; gap: 24px">
-      <p style="margin: 0; font-family: 'Oswald', sans-serif; font-weight: 400; letter-spacing: 0.28em; font-size: 14px; color: #7B2C8F">ARTE DIGITAL · LOMAS DE ZAMORA</p>
-      <h1 style="margin: 0; font-family: 'Bebas Neue', 'Oswald', sans-serif; font-weight: 400; font-size: clamp(64px, 11vw, 148px); line-height: 0.88; color: #3B1240">Imágenes<br>que <span style="color: #8A2FA0">mutan</span><br>en recuerdos.</h1>
-      <p style="margin: 0; max-width: 520px; font-size: 19px; line-height: 1.6; color: #4A3550">Ilustración, retratos, collage digital y diseño gráfico hechos a mano en la pantalla. Transformo tus fotos, tus mascotas y tus ideas en piezas para colgar, regalar o mostrar al mundo.</p>
-      <div style="display: flex; flex-wrap: wrap; gap: 14px; margin-top: 8px">
-        <a class="mv-btn" href="#contacto" style="display: inline-flex; align-items: center; gap: 10px; min-height: 52px; padding: 0 28px; border-radius: 999px; background: #3B1240; color: #FFFFFF; text-decoration: none; font-weight: 700; font-size: 16px">Pedir mi obra
-          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"></path></svg></a>
-        <a class="mv-btn" href="#galeria" style="display: inline-flex; align-items: center; min-height: 52px; padding: 0 28px; border-radius: 999px; border: 2px solid #3B1240; color: #3B1240; text-decoration: none; font-weight: 700; font-size: 16px">Ver galería</a>
-      </div>
+<section id="inicio" class="wrap hero">
+  <svg class="zig" viewBox="0 0 1200 700" preserveAspectRatio="none" aria-hidden="true"><polygon points="0,40 820,120 300,330 1200,560 1200,640 160,380 640,190 0,110" fill="#E6E0E9"/></svg>
+  <div class="hero-copy">
+    <p class="kicker">Arte digital · Lomas de Zamora</p>
+    <h1 class="display">Imágenes<br>que <em>mutan</em><br>en recuerdos.</h1>
+    <p class="lead" style="font-size:19px;max-width:520px">Ilustración, retratos, collage digital y diseño gráfico hechos a mano en la pantalla. Transformo tus fotos, tus mascotas y tus ideas en piezas para colgar, regalar o mostrar al mundo.</p>
+    <div style="display:flex;flex-wrap:wrap;gap:14px;margin-top:8px">
+      <a class="btn btn-solid" href="#contacto">Pedir mi obra
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+      <a class="btn btn-line" href="#obras">Ver obras</a>
     </div>
-    <div style="position: relative; z-index: 1; flex: 1 1 340px; display: flex; justify-content: center">
-      <div style="position: relative; width: min(100%, 420px); aspect-ratio: 4 / 5">
-        <img src="img/vida.jpg" alt="Ilustración «La vida es nueva a cada paso»" style="position: absolute; right: 0; top: 0; width: 72%; aspect-ratio: 1 / 1; object-fit: cover; border-radius: 6px; box-shadow: 0 30px 60px -20px rgba(59,18,64,.45); transform: rotate(4deg)">
-        <img loading="lazy" src="img/mascotas.jpg" alt="Collage de mascotas con flores" style="position: absolute; left: 0; bottom: 0; width: 56%; aspect-ratio: 3 / 4; object-fit: cover; border: 10px solid #FFFFFF; border-radius: 4px; box-shadow: 0 30px 60px -20px rgba(59,18,64,.45); transform: rotate(-6deg)">
-      </div>
-    </div>
-  </section>
-
-  <!-- MARQUEE STRIP -->
-  <div style="background: #3B1240; color: #EADFEF; padding: 18px 24px; display: flex; flex-wrap: wrap; justify-content: center; gap: 10px 36px; font-family: 'Bebas Neue', sans-serif; font-size: 26px; letter-spacing: 0.08em">
-    <span>Ilustración</span><span style="color: #B07CC2" aria-hidden="true">✦</span>
-    <span>Retratos</span><span style="color: #B07CC2" aria-hidden="true">✦</span>
-    <span>Cuadros</span><span style="color: #B07CC2" aria-hidden="true">✦</span>
-    <span>Diseño gráfico</span><span style="color: #B07CC2" aria-hidden="true">✦</span>
-    <span>Impresión</span>
   </div>
-
-  <!-- SERVICIOS -->
-  <section id="servicios" style="max-width: 1240px; margin: 0 auto; padding: 120px 24px 80px">
-    <div style="display: flex; flex-wrap: wrap; align-items: end; justify-content: space-between; gap: 24px; margin-bottom: 56px">
-      <h2 style="margin: 0; font-family: 'Bebas Neue', sans-serif; font-weight: 400; font-size: clamp(52px, 7vw, 96px); line-height: 0.9; color: #3B1240">Servicios</h2>
-      <p style="margin: 0; max-width: 420px; font-size: 17px; line-height: 1.6; color: #4A3550">Cada pieza se hace por encargo y a tu medida. Elegí el estilo y yo me encargo del resto.</p>
+  <div class="hero-art">
+    <div class="stack">
+      <img class="a" src="img/fiorito.jpg" alt="Cuadro enmarcado «Fiorito» con señalador y tarjeta de Mutar Visuales">
+      <img class="b" src="img/vida.jpg" alt="Ilustración «La vida es nueva a cada paso»">
     </div>
+  </div>
+</section>
 
-    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(270px, 1fr)); gap: 24px">
-      <article class="mv-card" style="background: #FFFFFF; border-radius: 18px; overflow: hidden; display: flex; flex-direction: column">
-        <div style="overflow: hidden; aspect-ratio: 4 / 3; background: #E6E0E9"><img loading="lazy" src="img/planta.jpg" alt="Ilustración botánica «Cada día es una oportunidad»" style="width: 100%; height: 100%; object-fit: cover; display: block"></div>
-        <div style="padding: 24px 26px 28px; display: flex; flex-direction: column; gap: 10px">
-          <span style="font-family: 'Oswald', sans-serif; font-size: 13px; letter-spacing: 0.24em; color: #7B2C8F">01</span>
-          <h3 style="margin: 0; font-family: 'Oswald', sans-serif; font-weight: 600; font-size: 26px; color: #3B1240">Ilustración y collage digital</h3>
-          <p style="margin: 0; font-size: 16px; line-height: 1.6; color: #4A3550">Frases, flores, mascotas y texturas combinadas en láminas únicas.</p>
-        </div>
-      </article>
-      <article class="mv-card" style="background: #FFFFFF; border-radius: 18px; overflow: hidden; display: flex; flex-direction: column">
-        <div style="overflow: hidden; aspect-ratio: 4 / 3; background: #E6E0E9"><img loading="lazy" src="img/perro.jpg" alt="Retrato ilustrado de un perro" style="width: 100%; height: 100%; object-fit: cover; display: block"></div>
-        <div style="padding: 24px 26px 28px; display: flex; flex-direction: column; gap: 10px">
-          <span style="font-family: 'Oswald', sans-serif; font-size: 13px; letter-spacing: 0.24em; color: #7B2C8F">02</span>
-          <h3 style="margin: 0; font-family: 'Oswald', sans-serif; font-weight: 600; font-size: 26px; color: #3B1240">Retratos</h3>
-          <p style="margin: 0; font-size: 16px; line-height: 1.6; color: #4A3550">Tu foto, la de tu pareja o tu mascota, convertida en ilustración.</p>
-        </div>
-      </article>
-      <article class="mv-card" style="background: #FFFFFF; border-radius: 18px; overflow: hidden; display: flex; flex-direction: column">
-        <div style="overflow: hidden; aspect-ratio: 4 / 3; background: #E6E0E9"><img loading="lazy" src="img/perrocuadro.jpg" alt="Cuadro enmarcado con retrato de perro" style="width: 100%; height: 100%; object-fit: cover; display: block"></div>
-        <div style="padding: 24px 26px 28px; display: flex; flex-direction: column; gap: 10px">
-          <span style="font-family: 'Oswald', sans-serif; font-size: 13px; letter-spacing: 0.24em; color: #7B2C8F">03</span>
-          <h3 style="margin: 0; font-family: 'Oswald', sans-serif; font-weight: 600; font-size: 26px; color: #3B1240">Cuadros personalizados</h3>
-          <p style="margin: 0; font-size: 16px; line-height: 1.6; color: #4A3550">Tu obra impresa y enmarcada, lista para colgar o regalar.</p>
-        </div>
-      </article>
-      <article class="mv-card" style="background: #FFFFFF; border-radius: 18px; overflow: hidden; display: flex; flex-direction: column">
-        <div style="overflow: hidden; aspect-ratio: 4 / 3; background: #E6E0E9"><img loading="lazy" src="img/flyers.jpg" alt="Flyers y folletos diseñados" style="width: 100%; height: 100%; object-fit: cover; display: block"></div>
-        <div style="padding: 24px 26px 28px; display: flex; flex-direction: column; gap: 10px">
-          <span style="font-family: 'Oswald', sans-serif; font-size: 13px; letter-spacing: 0.24em; color: #7B2C8F">04</span>
-          <h3 style="margin: 0; font-family: 'Oswald', sans-serif; font-weight: 600; font-size: 26px; color: #3B1240">Diseño gráfico</h3>
-          <p style="margin: 0; font-size: 16px; line-height: 1.6; color: #4A3550">Flyers, folletos, tarjetas, logos e identidades visuales para tu marca.</p>
-        </div>
-      </article>
-      <article class="mv-card" style="background: #3B1240; color: #FFFFFF; border-radius: 18px; overflow: hidden; display: flex; flex-direction: column; justify-content: space-between; padding: 30px 26px; gap: 28px">
-        <svg width="56" height="56" viewBox="0 0 24 24" fill="none" stroke="#D6B6E2" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="2"></rect><circle cx="9" cy="9" r="2"></circle><path d="M21 15l-5-5L5 21"></path></svg>
-        <div style="display: flex; flex-direction: column; gap: 10px">
-          <span style="font-family: 'Oswald', sans-serif; font-size: 13px; letter-spacing: 0.24em; color: #D6B6E2">05</span>
-          <h3 style="margin: 0; font-family: 'Oswald', sans-serif; font-weight: 600; font-size: 26px">Impresión y retoque de fotos</h3>
-          <p style="margin: 0; font-size: 16px; line-height: 1.6; color: #EADFEF">Recuperá fotos viejas, corregí colores e imprimí tus recuerdos favoritos.</p>
-        </div>
-      </article>
-    </div>
-  </section>
-
-  <!-- GALERÍA -->
-  <section id="galeria" style="background: #EDE7EF; padding: 110px 24px">
-    <div style="max-width: 1240px; margin: 0 auto">
-      <h2 style="margin: 0 0 12px; font-family: 'Bebas Neue', sans-serif; font-weight: 400; font-size: clamp(52px, 7vw, 96px); line-height: 0.9; color: #3B1240">Galería</h2>
-      <p style="margin: 0 0 48px; font-size: 17px; color: #4A3550">Algunos trabajos recientes.</p>
-      <div style="display: grid; grid-template-columns: repeat(auto-fill, minmax(230px, 1fr)); gap: 20px">
-        <figure class="mv-card" style="margin: 0; overflow: hidden; border-radius: 14px; aspect-ratio: 3 / 4; background: #FFFFFF"><img loading="lazy" src="img/vida.jpg" alt="Ilustración «La vida es nueva a cada paso»" style="width: 100%; height: 100%; object-fit: cover; display: block"></figure>
-        <figure class="mv-card" style="margin: 0; overflow: hidden; border-radius: 14px; aspect-ratio: 3 / 4; background: #FFFFFF"><img loading="lazy" src="img/rostro.jpg" alt="Ilustración abstracta de rostro en tonos tierra" style="width: 100%; height: 100%; object-fit: cover; display: block"></figure>
-        <figure class="mv-card" style="margin: 0; overflow: hidden; border-radius: 14px; aspect-ratio: 3 / 4; background: #FFFFFF"><img loading="lazy" src="img/mascotas.jpg" alt="Collage de mascotas con flores" style="width: 100%; height: 100%; object-fit: cover; display: block"></figure>
-        <figure class="mv-card" style="margin: 0; overflow: hidden; border-radius: 14px; aspect-ratio: 3 / 4; background: #FFFFFF"><img loading="lazy" src="img/planta.jpg" alt="Ilustración botánica «Cada día es una oportunidad»" style="width: 100%; height: 100%; object-fit: cover; display: block"></figure>
-        <figure class="mv-card" style="margin: 0; overflow: hidden; border-radius: 14px; aspect-ratio: 3 / 4; background: #FFFFFF"><img loading="lazy" src="img/perro.jpg" alt="Retrato ilustrado de un perro" style="width: 100%; height: 100%; object-fit: cover; display: block"></figure>
-        <figure class="mv-card" style="margin: 0; overflow: hidden; border-radius: 14px; aspect-ratio: 3 / 4; background: #FFFFFF"><img loading="lazy" src="img/tarjetas.jpg" alt="Tarjetas personales diseñadas" style="width: 100%; height: 100%; object-fit: cover; display: block"></figure>
-        <figure class="mv-card" style="margin: 0; overflow: hidden; border-radius: 14px; aspect-ratio: 3 / 4; background: #FFFFFF"><img loading="lazy" src="img/identidad.jpg" alt="Logo e identidad visual para una empresa" style="width: 100%; height: 100%; object-fit: contain; display: block"></figure>
-        <figure class="mv-card" style="margin: 0; overflow: hidden; border-radius: 14px; aspect-ratio: 3 / 4; background: #FFFFFF"><img loading="lazy" src="img/perrocuadro.jpg" alt="Cuadro enmarcado con retrato de perro" style="width: 100%; height: 100%; object-fit: cover; display: block"></figure>
-      </div>
-    </div>
-  </section>
-
-  <!-- PROCESO -->
-  <section id="proceso" style="max-width: 1240px; margin: 0 auto; padding: 120px 24px">
-    <h2 style="margin: 0 0 56px; font-family: 'Bebas Neue', sans-serif; font-weight: 400; font-size: clamp(52px, 7vw, 96px); line-height: 0.9; color: #3B1240">Cómo trabajo</h2>
-    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 40px">
-      <div style="display: flex; flex-direction: column; gap: 14px; border-top: 3px solid #3B1240; padding-top: 24px">
-        <span style="font-family: 'Bebas Neue', sans-serif; font-size: 64px; line-height: 1; color: #8A2FA0">1</span>
-        <h3 style="margin: 0; font-family: 'Oswald', sans-serif; font-weight: 600; font-size: 24px; color: #3B1240">Me escribís</h3>
-        <p style="margin: 0; font-size: 16px; line-height: 1.6; color: #4A3550">Contame qué querés, mandame tus fotos o ideas por WhatsApp.</p>
-      </div>
-      <div style="display: flex; flex-direction: column; gap: 14px; border-top: 3px solid #3B1240; padding-top: 24px">
-        <span style="font-family: 'Bebas Neue', sans-serif; font-size: 64px; line-height: 1; color: #8A2FA0">2</span>
-        <h3 style="margin: 0; font-family: 'Oswald', sans-serif; font-weight: 600; font-size: 24px; color: #3B1240">Diseño tu pieza</h3>
-        <p style="margin: 0; font-size: 16px; line-height: 1.6; color: #4A3550">Te muestro avances y ajustamos juntos hasta que quede como imaginaste.</p>
-      </div>
-      <div style="display: flex; flex-direction: column; gap: 14px; border-top: 3px solid #3B1240; padding-top: 24px">
-        <span style="font-family: 'Bebas Neue', sans-serif; font-size: 64px; line-height: 1; color: #8A2FA0">3</span>
-        <h3 style="margin: 0; font-family: 'Oswald', sans-serif; font-weight: 600; font-size: 24px; color: #3B1240">La recibís</h3>
-        <p style="margin: 0; font-size: 16px; line-height: 1.6; color: #4A3550">En digital, impresa o enmarcada, lista para disfrutar.</p>
-      </div>
-    </div>
-  </section>
-
-  <!-- CONTACTO -->
-  <section id="contacto" style="position: relative; background: #3B1240; color: #FFFFFF; padding: 120px 24px; overflow: hidden">
-    <svg viewBox="0 0 1200 600" preserveAspectRatio="none" aria-hidden="true" style="position: absolute; inset: 0; width: 100%; height: 100%"><polygon points="0,60 760,140 260,320 1200,520 1200,580 140,360 600,180 0,120" fill="#4A1A52"></polygon></svg>
-    <div style="position: relative; max-width: 1240px; margin: 0 auto; display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 48px">
-      <div style="flex: 999 1 460px; min-width: 0; display: flex; flex-direction: column; gap: 20px">
-        <h2 style="margin: 0; font-family: 'Bebas Neue', sans-serif; font-weight: 400; font-size: clamp(56px, 8vw, 112px); line-height: 0.9">Realizá tu pedido<br>por WhatsApp</h2>
-        <p style="margin: 0; max-width: 500px; font-size: 18px; line-height: 1.6; color: #EADFEF">Consultas, presupuestos y pedidos personalizados. Respondo a la brevedad.</p>
-        <div style="display: flex; flex-wrap: wrap; gap: 14px; margin-top: 8px">
-          <a class="mv-btn" href="https://wa.me/5491149380848?text=Hola%20Mutar%20Visuales%2C%20quiero%20hacer%20un%20pedido" style="display: inline-flex; align-items: center; gap: 10px; min-height: 56px; padding: 0 30px; border-radius: 999px; background: #FFFFFF; color: #3B1240; text-decoration: none; font-weight: 700; font-size: 17px">
-            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 11.5a8.4 8.4 0 0 1-12.4 7.4L3 21l2.1-5.5A8.5 8.5 0 1 1 21 11.5z"></path><path d="M9 9.5c.4 2 2 3.6 4 4l1.2-1.2 2 1-.6 1.6c-3.2.2-6.6-3.2-6.4-6.4l1.6-.6 1 2z"></path></svg>
-            Escribime: 11 4938-0848</a>
-          <a class="mv-btn" href="https://instagram.com/mutar.visuales" style="display: inline-flex; align-items: center; gap: 10px; min-height: 56px; padding: 0 30px; border-radius: 999px; border: 2px solid #D6B6E2; color: #FFFFFF; text-decoration: none; font-weight: 700; font-size: 17px">
-            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="5"></rect><circle cx="12" cy="12" r="4"></circle><circle cx="17.5" cy="6.5" r="0.6" fill="currentColor"></circle></svg>
-            @mutar.visuales</a>
-        </div>
-      </div>
-      <div style="flex: 1 1 260px; display: flex; flex-direction: column; align-items: center; gap: 18px">
-        <svg width="220" height="190" viewBox="0 0 400 340" role="img" aria-label="Logo de Mutar Visuales"><polygon points="120,60 300,60 210,230" fill="#8E8189"></polygon><polygon points="46,0 58,0 66,262 4,262" fill="#FFFFFF"></polygon><polygon points="342,0 354,0 396,262 334,262" fill="#FFFFFF"></polygon><polyline points="84,30 314,62 122,176 314,290 84,322" fill="none" stroke="#B565D0" stroke-width="32" stroke-linejoin="miter"></polyline></svg>
-        <span style="font-family: 'Oswald', sans-serif; font-weight: 400; letter-spacing: 0.5em; font-size: 26px">MUTAR</span>
-        <span style="font-family: 'Oswald', sans-serif; font-weight: 300; letter-spacing: 0.6em; font-size: 14px; color: #D6B6E2">VISUALES</span>
-      </div>
-    </div>
-  </section>
-
-  <footer style="background: #2A0B2E; color: #CDBBD3; padding: 28px 24px; text-align: center; font-size: 14px">
-    Mutar Visuales · Arte digital · Lomas de Zamora, Buenos Aires
-  </footer>
+<div class="strip">
+  <span>Ilustración</span><i aria-hidden="true">✦</i><span>Retratos</span><i aria-hidden="true">✦</i><span>Cuadros</span><i aria-hidden="true">✦</i><span>Diseño gráfico</span><i aria-hidden="true">✦</i><span>Impresión</span>
 </div>
+
+<section id="servicios" class="wrap services">
+  <div class="sec-head rv">
+    <h2 class="display h2">Servicios</h2>
+    <p class="lead">Cada pieza se hace por encargo y a tu medida. Elegí el estilo y yo me encargo del resto.</p>
+  </div>
+  <div class="grid-svc">
+    <article class="card rv"><div class="ph"><img loading="lazy" src="img/planta.jpg" alt="Ilustración botánica «Cada día es una oportunidad»"></div>
+      <div class="tx"><span class="num">01</span><h3>Ilustración y collage digital</h3><p>Frases, flores, mascotas y texturas combinadas en láminas únicas.</p></div></article>
+    <article class="card rv"><div class="ph"><img loading="lazy" src="img/retrato-tri.jpg" alt="Retrato ilustrado con gorro y humo" style="object-position:center 30%"></div>
+      <div class="tx"><span class="num">02</span><h3>Retratos</h3><p>Tu foto, la de tu pareja o tu mascota, convertida en ilustración.</p></div></article>
+    <article class="card rv"><div class="ph"><img loading="lazy" src="img/dibujos-pared.jpg" alt="Dos cuadros con dibujos en línea colgados en la pared"></div>
+      <div class="tx"><span class="num">03</span><h3>Cuadros personalizados</h3><p>Tu obra impresa y enmarcada, lista para colgar o regalar.</p></div></article>
+    <article class="card rv"><div class="ph"><img loading="lazy" src="img/flyers.jpg" alt="Flyers y folletos diseñados"></div>
+      <div class="tx"><span class="num">04</span><h3>Diseño gráfico</h3><p>Flyers, folletos, tarjetas, logos e identidades visuales para tu marca.</p></div></article>
+    <article class="card dark rv">
+      <svg width="56" height="56" viewBox="0 0 24 24" fill="none" stroke="#D6B6E2" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="9" cy="9" r="2"/><path d="M21 15l-5-5L5 21"/></svg>
+      <div style="display:flex;flex-direction:column;gap:10px"><span class="num">05</span><h3>Impresión y retoque de fotos</h3><p>Recuperá fotos viejas, corregí colores e imprimí tus recuerdos favoritos.</p></div>
+    </article>
+  </div>
+</section>
+
+<!-- CARRUSEL -->
+<section id="obras" class="showcase" aria-roledescription="carrusel" aria-label="Obras enmarcadas">
+  <div class="wrap sec-head rv">
+    <div style="display:flex;flex-direction:column;gap:14px">
+      <p class="kicker">Cuadros que ya tienen casa</p>
+      <h2 class="display h2">Obras</h2>
+    </div>
+    <p class="lead">Retratos, barrios, clubes y frases que alguien eligió colgar en su pared. Deslizá para recorrerlas.</p>
+  </div>
+  <div class="car">
+    <div class="track" id="track" tabindex="0" aria-label="Obras, desplazable">
+      <figure class="slide"><img src="img/retrato-tri.jpg" alt="Retrato ilustrado con gorro y humo, enmarcado en madera clara"><figcaption>Retrato · humo y sombra</figcaption></figure>
+      <figure class="slide"><img loading="lazy" src="img/los-andes.jpg" alt="Hincha de Los Andes de espaldas en la cancha, en marco rojo"><figcaption>Los Andes · desde la tribuna</figcaption></figure>
+      <figure class="slide"><img loading="lazy" src="img/evita.jpg" alt="Ilustración de Evita hablando al micrófono con una cita"><figcaption>Evita · cita ilustrada</figcaption></figure>
+      <figure class="slide"><img loading="lazy" src="img/abuela.jpg" alt="Pañuelo formado por la frase «Luche como abuela» en dos tamaños"><figcaption>Memoria, verdad y justicia</figcaption></figure>
+      <figure class="slide"><img loading="lazy" src="img/retrato-diego.jpg" alt="Retrato ilustrado de Diego con camiseta de Boca, en marco dorado"><figcaption>Diego · pop art</figcaption></figure>
+      <figure class="slide"><img loading="lazy" src="img/cala-amor.jpg" alt="Cuadro con escudo del C.A.L.A. y la frase «Que me van a hablar de amor»"><figcaption>C.A.L.A. · ganando las calles</figcaption></figure>
+      <figure class="slide"><img loading="lazy" src="img/retrato-rock.jpg" alt="Retrato en tonos azules de un músico con anteojos"><figcaption>Retrato · rock nacional</figcaption></figure>
+      <figure class="slide"><img loading="lazy" src="img/fiorito.jpg" alt="Cuadro «Fiorito» con señalador y tarjeta"><figcaption>Fiorito · cartel de barrio</figcaption></figure>
+      <figure class="slide"><img loading="lazy" src="img/cala-siempre.jpg" alt="Cuadro «Ayer, hoy y siempre» del C.A.L.A. en marco rojo"><figcaption>Ayer, hoy y siempre</figcaption></figure>
+      <figure class="slide"><img loading="lazy" src="img/dibujos-pared.jpg" alt="Dos cuadros con dibujos en línea colgados en la pared"><figcaption>Dibujos en línea</figcaption></figure>
+      <figure class="slide"><img loading="lazy" src="img/perrocuadro.jpg" alt="Retrato de perro en marco de madera"><figcaption>Retrato de mascota</figcaption></figure>
+    </div>
+    <div class="wrap car-ui">
+      <div class="dots" id="dots" role="group" aria-label="Elegir obra"></div>
+      <div class="arrows">
+        <button type="button" id="prev" aria-label="Obra anterior"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M19 12H5M11 18l-6-6 6-6"/></svg></button>
+        <button type="button" id="next" aria-label="Obra siguiente"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SERIE DANZA -->
+<section id="danza" class="danza">
+  <svg class="zig2" viewBox="0 0 1200 900" preserveAspectRatio="none" aria-hidden="true"><polygon points="1200,0 1200,900 0,900" fill="#EBD3BD"/></svg>
+  <div class="wrap">
+    <div class="sec-head rv">
+      <div style="display:flex;flex-direction:column;gap:14px">
+        <p class="kicker">Serie · para un estudio de danza</p>
+        <h2 class="display h2">De la danza aprendí…</h2>
+      </div>
+      <p class="lead">Cuatro bailarinas, cuatro lecciones. Una serie pensada para las paredes de un estudio, donde cada cuadro termina la frase de otra manera.</p>
+    </div>
+    <div class="grid-danza">
+      <figure class="poster rv"><div class="ph"><img loading="lazy" src="img/danza-centro.jpg" alt="Bailarina en salto, fondo terracota"></div>
+        <figcaption><span>I</span>…a fortalecer mi centro para no perder el equilibrio.</figcaption></figure>
+      <figure class="poster rv"><div class="ph"><img loading="lazy" src="img/danza-erguida.jpg" alt="Bailarina en puntas, fondo gris y arena"></div>
+        <figcaption><span>II</span>…a estar siempre erguida y a continuar si me equivoco.</figcaption></figure>
+      <figure class="poster rv"><div class="ph"><img loading="lazy" src="img/danza-piso.jpg" alt="Bailarina con brazos abiertos, fondo naranja"></div>
+        <figcaption><span>III</span>…a no mirar al piso y a improvisar si lo necesito.</figcaption></figure>
+      <figure class="poster rv"><div class="ph"><img loading="lazy" src="img/danza-objetivo.jpg" alt="Bailarina de blanco en giro, fondo ocre"></div>
+        <figcaption><span>IV</span>…a fijar mi objetivo para no marearme.</figcaption></figure>
+    </div>
+    <div class="danza-band rv">
+      <figure class="wide"><img loading="lazy" src="img/danza-estudio.jpg" alt="Alumnas del estudio sosteniendo los cuadros contra la pared"></figure>
+      <figure class="side"><img loading="lazy" src="img/danza-detalle.jpg" alt="Detalle de la ilustración de una bailarina"></figure>
+    </div>
+  </div>
+</section>
+
+<!-- GALERIA -->
+<section id="galeria" class="gallery">
+  <div class="wrap">
+    <div class="sec-head rv">
+      <h2 class="display h2">Galería</h2>
+      <p class="lead">Ilustración, collage y diseño, antes de llegar al marco.</p>
+    </div>
+    <div class="grid-gal">
+      <figure class="rv"><img loading="lazy" src="img/vida.jpg" alt="Ilustración «La vida es nueva a cada paso»"></figure>
+      <figure class="rv"><img loading="lazy" src="img/lomas.jpg" alt="Cartel de la estación Lomas de Zamora ilustrado en blanco y negro"></figure>
+      <figure class="rv"><img loading="lazy" src="img/rostro.jpg" alt="Ilustración abstracta de rostro en tonos tierra"></figure>
+      <figure class="rv"><img loading="lazy" src="img/mascotas.jpg" alt="Collage de mascotas con flores"></figure>
+      <figure class="rv"><img loading="lazy" src="img/planta.jpg" alt="Ilustración botánica «Cada día es una oportunidad»"></figure>
+      <figure class="rv"><img loading="lazy" src="img/perro.jpg" alt="Retrato ilustrado de un perro"></figure>
+      <figure class="rv"><img loading="lazy" src="img/tarjetas.jpg" alt="Tarjetas personales diseñadas"></figure>
+      <figure class="rv"><img loading="lazy" src="img/identidad.jpg" alt="Logo e identidad visual para una empresa" style="object-fit:contain"></figure>
+    </div>
+  </div>
+</section>
+
+<!-- PACKAGING -->
+<section class="wrap pack">
+  <div class="pack-grid">
+    <div class="quote rv">
+      <p class="kicker">Cada pedido llega con cariño</p>
+      <blockquote>Ofrecer belleza <em>importa.</em></blockquote>
+      <p class="lead">Sostener lo sensible es sostener lo humano. Cada obra viaja protegida, con su tarjeta, su señalador y un detalle hecho a mano.</p>
+    </div>
+    <figure class="rv"><img loading="lazy" src="img/packaging-tarjeta.jpg" alt="Retrato de perro embalado junto a una tarjeta de agradecimiento de Mutar Visuales"></figure>
+    <figure class="rv"><img loading="lazy" src="img/packaging-bolsa.jpg" alt="Bolsa de regalo con moño violeta y etiqueta de Mutar Visuales"></figure>
+  </div>
+</section>
+
+<!-- PROCESO -->
+<section id="proceso" class="process">
+  <div class="wrap">
+    <h2 class="display h2 rv" style="margin-bottom:56px">Cómo trabajo</h2>
+    <div class="grid-steps">
+      <div class="step rv"><b>1</b><h3>Me escribís</h3><p>Contame qué querés, mandame tus fotos o ideas por WhatsApp.</p></div>
+      <div class="step rv"><b>2</b><h3>Diseño tu pieza</h3><p>Te muestro avances y ajustamos juntos hasta que quede como imaginaste.</p></div>
+      <div class="step rv"><b>3</b><h3>La recibís</h3><p>En digital, impresa o enmarcada, lista para disfrutar.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACTO -->
+<section id="contacto" class="contact">
+  <img class="bg" src="img/lomas.jpg" alt="" loading="lazy">
+  <div class="wrap">
+    <div style="flex:999 1 460px;min-width:0;display:flex;flex-direction:column;gap:20px">
+      <h2 class="display">Realizá tu pedido<br>por WhatsApp</h2>
+      <p>Consultas, presupuestos y pedidos personalizados. Respondo a la brevedad.</p>
+      <div style="display:flex;flex-wrap:wrap;gap:14px;margin-top:8px">
+        <a class="btn btn-white" href="https://wa.me/5491149380848?text=Hola%20Mutar%20Visuales%2C%20quiero%20hacer%20un%20pedido">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 11.5a8.4 8.4 0 0 1-12.4 7.4L3 21l2.1-5.5A8.5 8.5 0 1 1 21 11.5z"/></svg>
+          Escribime: 11 4938-0848</a>
+        <a class="btn btn-ghost" href="https://instagram.com/mutar.visuales">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="0.6" fill="currentColor"/></svg>
+          @mutar.visuales</a>
+      </div>
+    </div>
+    <div style="flex:1 1 260px;display:flex;flex-direction:column;align-items:center;gap:18px">
+      <svg width="220" height="190" viewBox="0 0 400 340" role="img" aria-label="Logo de Mutar Visuales"><polygon points="120,60 300,60 210,230" fill="#8E8189"/><polygon points="46,0 58,0 66,262 4,262" fill="#FFFFFF"/><polygon points="342,0 354,0 396,262 334,262" fill="#FFFFFF"/><polyline points="84,30 314,62 122,176 314,290 84,322" fill="none" stroke="#B565D0" stroke-width="32"/></svg>
+      <span style="font-family:'Oswald',sans-serif;letter-spacing:.5em;font-size:26px">MUTAR</span>
+      <span style="font-family:'Oswald',sans-serif;font-weight:300;letter-spacing:.6em;font-size:14px;color:#D6B6E2">VISUALES</span>
+    </div>
+  </div>
+</section>
+
+<footer>Mutar Visuales · Arte digital · Lomas de Zamora, Buenos Aires</footer>
+
+<script>
+(function(){
+  // aparición suave al hacer scroll
+  var rv=document.querySelectorAll('.rv');
+  if('IntersectionObserver' in window){
+    var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target);}})},{threshold:.12});
+    rv.forEach(function(el){io.observe(el)});
+  } else rv.forEach(function(el){el.classList.add('in')});
+
+  // carrusel
+  var track=document.getElementById('track'), slides=[].slice.call(track.querySelectorAll('.slide')),
+      dots=document.getElementById('dots'), cur=0, timer=null,
+      reduce=window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  slides.forEach(function(s,i){
+    var b=document.createElement('button'); b.type='button';
+    b.setAttribute('aria-label','Ver obra '+(i+1)+' de '+slides.length);
+    b.addEventListener('click',function(){go(i);restart();});
+    dots.appendChild(b);
+  });
+  function center(i){var s=slides[i];return s.offsetLeft+s.offsetWidth/2-track.clientWidth/2;}
+  function go(i){cur=(i+slides.length)%slides.length;track.scrollTo({left:center(cur),behavior:reduce?'auto':'smooth'});}
+  function mark(){
+    var mid=track.scrollLeft+track.clientWidth/2,best=0,bd=1e9;
+    slides.forEach(function(s,i){var d=Math.abs(s.offsetLeft+s.offsetWidth/2-mid);if(d<bd){bd=d;best=i;}});
+    cur=best;
+    slides.forEach(function(s,i){s.classList.toggle('on',i===best)});
+    [].forEach.call(dots.children,function(d,i){d.setAttribute('aria-current',i===best?'true':'false')});
+  }
+  var raf; track.addEventListener('scroll',function(){cancelAnimationFrame(raf);raf=requestAnimationFrame(mark);},{passive:true});
+  document.getElementById('prev').addEventListener('click',function(){go(cur-1);restart();});
+  document.getElementById('next').addEventListener('click',function(){go(cur+1);restart();});
+  track.addEventListener('keydown',function(e){if(e.key==='ArrowRight'){e.preventDefault();go(cur+1);restart();}if(e.key==='ArrowLeft'){e.preventDefault();go(cur-1);restart();}});
+  function start(){if(reduce)return;stop();timer=setInterval(function(){go(cur+1)},4500);}
+  function stop(){if(timer){clearInterval(timer);timer=null;}}
+  function restart(){stop();start();}
+  ['mouseenter','touchstart','focusin'].forEach(function(ev){track.addEventListener(ev,stop,{passive:true})});
+  ['mouseleave','focusout'].forEach(function(ev){track.addEventListener(ev,start)});
+  window.addEventListener('load',function(){mark();start();});
+  window.addEventListener('resize',function(){go(cur)});
+  mark();
+})();
+</script>
 </body>
 </html>
