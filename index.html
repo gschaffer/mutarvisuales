@@ -62,7 +62,11 @@ header{position:relative;z-index:3}
 
 /* servicios */
 .services{padding-top:120px;padding-bottom:80px}
-.grid-svc{display:grid;grid-template-columns:repeat(auto-fit,minmax(270px,1fr));gap:24px}
+.grid-svc{display:grid;grid-template-columns:repeat(6,minmax(0,1fr));gap:24px}
+.grid-svc>.card{grid-column:span 2}.grid-svc>.card.wide{grid-column:span 3}
+.card.wide .ph{aspect-ratio:16/9}
+@media (max-width:900px){.grid-svc{grid-template-columns:repeat(2,minmax(0,1fr))}.grid-svc>.card,.grid-svc>.card.wide{grid-column:span 1}.grid-svc>.card:last-child{grid-column:span 2}.card.wide .ph{aspect-ratio:4/3}.grid-svc>.card:last-child .ph{aspect-ratio:16/9}}
+@media (max-width:600px){.grid-svc{grid-template-columns:minmax(0,1fr)}.grid-svc>.card:last-child{grid-column:span 1}.grid-svc>.card:last-child .ph{aspect-ratio:4/3}}
 .card{background:#fff;border-radius:18px;overflow:hidden;display:flex;flex-direction:column}
 .card .ph{overflow:hidden;aspect-ratio:4/3;background:var(--zig)}
 .card .ph img{width:100%;height:100%;object-fit:cover;transition:transform .5s ease}
@@ -71,7 +75,7 @@ header{position:relative;z-index:3}
 .num{font-family:'Oswald',sans-serif;font-size:13px;letter-spacing:.24em;color:var(--violet)}
 .card h3{margin:0;font-family:'Oswald',sans-serif;font-weight:600;font-size:26px;color:var(--plum)}
 .card p{margin:0;font-size:16px;line-height:1.6;color:var(--muted)}
-.card.dark{background:var(--plum);color:#fff;padding:30px 26px;justify-content:space-between;gap:28px}
+.card.dark{background:var(--plum);color:#fff}.card.dark .ph{background:#4d1a54}
 .card.dark h3{color:#fff}.card.dark p{color:#EADFEF}.card.dark .num{color:var(--lilac)}
 
 /* carrusel */
@@ -251,12 +255,10 @@ footer{background:#2A0B2E;color:#CDBBD3;padding:28px 24px;text-align:center;font
       <div class="tx"><span class="num">02</span><h3>Retratos</h3><p>Tu foto, la de tu pareja o tu mascota, convertida en ilustración.</p></div></article>
     <article class="card rv"><div class="ph"><img loading="lazy" src="img/dibujos-pared.jpg" alt="Dos cuadros con dibujos en línea colgados en la pared"></div>
       <div class="tx"><span class="num">03</span><h3>Cuadros personalizados</h3><p>Tu obra impresa y enmarcada, lista para colgar o regalar.</p></div></article>
-    <article class="card rv"><div class="ph"><img loading="lazy" src="img/flyers.jpg" alt="Flyers y folletos diseñados"></div>
+    <article class="card wide rv"><div class="ph"><img loading="lazy" src="img/flyers.jpg" alt="Flyers y folletos diseñados"></div>
       <div class="tx"><span class="num">04</span><h3>Diseño gráfico</h3><p>Flyers, folletos, tarjetas, logos e identidades visuales para tu marca.</p></div></article>
-    <article class="card dark rv">
-      <svg width="56" height="56" viewBox="0 0 24 24" fill="none" stroke="#D6B6E2" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="9" cy="9" r="2"/><path d="M21 15l-5-5L5 21"/></svg>
-      <div style="display:flex;flex-direction:column;gap:10px"><span class="num">05</span><h3>Impresión y retoque de fotos</h3><p>Recuperá fotos viejas, corregí colores e imprimí tus recuerdos favoritos.</p></div>
-    </article>
+    <article class="card dark wide rv"><div class="ph"><img loading="lazy" src="img/packaging-tarjeta.jpg" alt="Foto de una mascota retocada e impresa, lista para entregar" style="object-position:20% 25%"></div>
+      <div class="tx"><span class="num">05</span><h3>Impresión y retoque de fotos</h3><p>Recuperá fotos viejas, corregí colores e imprimí tus recuerdos favoritos.</p></div></article>
   </div>
 </section>
 
